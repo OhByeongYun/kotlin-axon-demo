@@ -1,0 +1,11 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.postgresql:postgresql:42.3.1'
+    implementation "org.axonframework:axon-spring-boot-starter:${axonVersion}"
+    implementation "org.axonframework:axon-configuration:${axonVersion}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,26 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: eventsourcing-cqrs-query
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/query
+    username: query
+    password: query
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+axon:
+  serializer:
+    general: jackson
+    events: jackson
+    message: jackson
+  axonserver:
+    servers: localhost:8124
+
+logging.level.com.techstamp.axondemo: debug
+logging.level.org.axonframework: debug
