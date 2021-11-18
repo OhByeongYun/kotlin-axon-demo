@@ -1,3 +1,7 @@
+dependencies {
+    implementation "org.axonframework:axon-messaging:${axonVersion}"
+}
+
 bootJar {
     enabled = true
 }

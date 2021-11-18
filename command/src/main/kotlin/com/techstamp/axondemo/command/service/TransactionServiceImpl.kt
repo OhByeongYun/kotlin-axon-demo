@@ -23,7 +23,8 @@ class TransactionServiceImpl(
                 holderID = UUID.randomUUID().toString(),
                 holderName = holderDTO.holderName,
                 tel = holderDTO.tel,
-                address = holderDTO.address
+                address = holderDTO.address,
+                company = holderDTO.company
             )
         )
     }

@@ -7,5 +7,6 @@ data class HolderCreationCommand(
     val holderID: String,
     val holderName: String,
     val tel: String,
-    val address: String
+    val address: String,
+    val company: String
 )
