@@ -40,8 +40,9 @@ class HolderAccountProjection(
         val accountSummary = HolderAccountSummary(
             holderId = event.holderID,
             name = event.holderName,
-            address = event.address,
             tel = event.tel,
+            address = event.address,
+            company = event.company,
             totalBalance = 0,
             accountCnt = 0
         )

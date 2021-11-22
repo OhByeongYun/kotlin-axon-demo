@@ -22,6 +22,9 @@ class HolderAccountSummary {
     @Column(nullable = false)
     var address: String = ""
 
+    @Column(nullable = false)
+    var company: String = ""
+
     @Column(name = "total_balance", nullable = false)
     var totalBalance: Long = 0L
 
@@ -35,6 +38,7 @@ class HolderAccountSummary {
         name: String,
         tel: String,
         address: String,
+        company: String,
         totalBalance: Long,
         accountCnt: Long
     ) {
@@ -42,6 +46,7 @@ class HolderAccountSummary {
         this.name = name
         this.tel = tel
         this.address = address
+        this.company = company
         this.totalBalance = totalBalance
         this.accountCnt = accountCnt
     }
