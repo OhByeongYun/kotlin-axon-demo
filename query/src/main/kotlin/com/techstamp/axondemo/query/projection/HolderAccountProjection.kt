@@ -6,12 +6,14 @@ import com.techstamp.axondemo.common.events.HolderCreationEvent
 import com.techstamp.axondemo.common.events.WithdrawMoneyEvent
 import com.techstamp.axondemo.common.logger.LoggerDelegate
 import com.techstamp.axondemo.query.entity.HolderAccountSummary
+import com.techstamp.axondemo.query.query.AccountQuery
 import com.techstamp.axondemo.query.repository.AccountRepository
 import org.axonframework.config.ProcessingGroup
 import org.axonframework.eventhandling.AllowReplay
 import org.axonframework.eventhandling.EventHandler
 import org.axonframework.eventhandling.ResetHandler
 import org.axonframework.eventhandling.Timestamp
+import org.axonframework.queryhandling.QueryHandler
 import org.springframework.retry.annotation.Backoff
 import org.springframework.retry.annotation.EnableRetry
 import org.springframework.retry.annotation.Retryable
@@ -78,6 +80,12 @@ class HolderAccountProjection(
         val holderAccountSummary = getHolderAccountSummary(event.holderID)
         holderAccountSummary.totalBalance -= event.amount
         repository.save(holderAccountSummary)
+    }
+
+    @QueryHandler
+    fun on(query: AccountQuery): HolderAccountSummary? {
+        logger.info("handling {$query}")
+        return query.holderId?.let { repository.findByHolderId(it) }
     }
 
     private fun getHolderAccountSummary(holderID: String): HolderAccountSummary {
